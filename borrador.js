@@ -101,3 +101,7 @@
 //     gap: 1rem;
 
 // }
+
+
+
+// textoEncriptar.value === textoEncriptar.value

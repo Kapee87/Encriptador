@@ -14,17 +14,19 @@
 
 body{
     margin: 1.8rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap:2rem;
+    
     font-family: 'Inter', sans-serif;
 }
 
 header{
     display: flex;
     align-self: baseline;
-    
+}
+
+.orden-pc-screen{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .main{
@@ -35,12 +37,13 @@ header{
 
 .main .caja-encriptar #texto-encriptar, .caja-desencriptar #texto-desencriptar{
     width: 70vw;
+    min-height: 40vh;
     height: auto;
     border: none;
     font-weight: 400;
     font-size: 1.8rem;
     font-family: 'Inter', sans-serif;
-    resize:vertical;
+    resize:none;
     
     
 }
@@ -57,9 +60,10 @@ gap: 0.3rem;
 .main .comentario svg{
     width: 1rem;
 }
-.main .comentario #comentario {
+.orden-pc-screen .main .comentario #comentario {
 font-weight:normal;
 font-size: 0.75rem;
+margin: 1rem 0;
 
 }
 .visible{
@@ -88,12 +92,12 @@ font-size: 0.75rem;
     color:var(--secondary-color) ;
 }
 .buttons-box .desencriptar{
-    background-color: #FFFFFF;
+    background-color: #f3f5fc;
     color:var(--main-color) ;
     border: solid 1px var(--main-color);
 }
 .caja-desencriptar .style {
-margin-top: 1rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -102,8 +106,89 @@ margin-top: 1rem;
     
     text-align: center;
     gap: 1rem;
-    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.347);
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.195);
     border-radius: 32px;
     padding: 3rem 2.5rem 1.5rem 2.5rem;
 
+}
+.caja-desencriptar .buttons-box{
+    display: flex;
+    justify-content: center;
+}
+.orden-pc-screen .caja-desencriptar #vacio .muñe{
+    display: none;
+}
+@media screen and (max-width:426px) {
+
+ .main .caja-encriptar #texto-encriptar, .caja-desencriptar #texto-desencriptar{
+     max-height: 50vh;
+     
+ }   
+
+}
+@media screen and (min-width:426px){
+    .buttons-box{
+        flex-direction: row;
+    }
+    header{
+        width: 80vw;
+    }
+    
+}
+@media screen and (min-width:1024px) {
+    
+    header{
+        width: 60vw;
+        
+        padding: 0.1rem;
+    }
+   
+    .caja-desencriptar #vacio{
+        width: 30vw;
+        height: 90vh;
+        margin-top: -4rem;
+        justify-content: center;
+    }
+    .caja-desencriptar #vacio img{
+        width: 25vw;
+        min-height: 40vh;
+    }
+    .orden-pc-screen .caja-desencriptar #vacio .muñe{
+        display: grid;
+    }
+
+    .orden-pc-screen{
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 2rem 3rem;
+        height: 80vh;
+       
+    }
+    .orden-pc-screen .main{
+        width: 40vw;
+        height:60vh;
+        
+    }
+    .main .caja-encriptar #texto-encriptar{
+        width: 50vw;
+        
+    } 
+    .orden-pc-screen .caja-desencriptar{
+     margin-left: -5rem;
+     margin-top: -3rem;
+    }
+    .orden-pc-screen .caja-desencriptar #texto-desencriptar{
+        width: 40vw;
+        height: 66vh;
+    }
+}
+@media screen and (min-width: 2000px) {
+    header svg{
+        width: 44px;
+        height: 60px;
+        
+    }
+ .orden-pc-screen{
+     justify-content: space-around;
+ }   
 }
