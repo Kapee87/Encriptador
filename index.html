@@ -20,7 +20,7 @@
     <div class="main">
 
         <div class="caja-encriptar">
-            <textarea name="" id="texto-encriptar" cols="30" rows="10" placeholder="Ingrese el texto aqui" ></textarea>
+            <textarea name="" id="texto-encriptar" cols="30" rows="10" placeholder="Ingrese el texto aqui" oninput="validarTextarea(this)"></textarea>
         </div>
     
         <div class="comentario">
@@ -182,41 +182,45 @@
     }
 
     btncopiarTexto.onclick = copiarTexto;
+
+function esValido(c) {
+            c = c.charCodeAt(0);
+            return (c >= 97 && c <= 122) || (c == 32)|| (c == 241); // [a-z ][espacio][ñ]
+    }
+
+function validarEntrada(str) {
+  for (var i = 0; i < str.length; i++) {
+      if (!esValido(str[i])) {
+        break;
+      }
+    }
+  return i == str.length;
+}
+
+
+function validarTextarea(elem) {
+  var txt = elem.value;
+  
+  if (!validarEntrada(txt)) {
+    elem.classList.add('invalido');
+    textoDesencriptar.value= "Usted ingresó un caracter inválido"
+    textoDesencriptar.className= "visible style";
+            mensajeVacio.className="hidden";
+            textoDesencriptar.classList.add('invalido');
     
+  } else {
+    elem.classList.remove('invalido');
+    
+    textoDesencriptar.className= "hidden";
+            mensajeVacio.className="visible style";
+            textoDesencriptar.classList.remove('invalido');
+  }
+}
+
 
    
-
-    textoEncriptar.addEventListener('keypress', () =>{
-        let str = '';
-        str = textoEncriptar.value;
-       console.log(str.length);
-       
-       if (str.length > 0){
-        for (let i=0; i < (textoEncriptar.value).length; i++){
-            console.log('empiezo a mostrar algo');
-            if (str[i] === str[i].toUpperCase() ){
-
-            console.log('dice que ' + str[i] + ' ' + str[i].toUpperCase);
-            break;
-            }else{
-                console.log('dice que ' + str[i] + ' ' + str[i].toUpperCase+ ' no es.') ;
-                }
-
-            } 
-        }else if (str === str.toUpperCase() ){
-                textoEncriptar.value= " ";    
-                alert('Ingrese sólo letras minúsculas');
-                
-            }else {
-                console.log('no es mayuscula')
-            }
-
-        
-        // if( textoEncriptar === )
-    } );
     
 
-  
 </script>
 </body>
 </html>
