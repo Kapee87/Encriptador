@@ -56,6 +56,9 @@
     
 </div>
 
+<footer>
+    <p>Proyecto para el challenge del curso de Alura | Oracle One, desarrollado por <em><a href="https://github.com/Kapee87">Nahuel Montaner</a></em></p>
+</footer>
 
 <script>
     var textoEncriptar = document.querySelector("#texto-encriptar");
@@ -65,6 +68,7 @@
     var btncopiarTexto = document.querySelector("#copiar");
     var mensajeVacio = document.querySelector("#vacio");
     var clipboardVar = "";
+    const reset = document.querySelector('#reset');
     
 
 
@@ -109,6 +113,7 @@
             
             i++;
         }
+    
     }
     btnEncriptar.onclick = encriptar;
 
@@ -203,14 +208,17 @@ function validarTextarea(elem) {
   
   if (!validarEntrada(txt)) {
     elem.classList.add('invalido');
-    textoDesencriptar.value= "Usted ingresó un caracter inválido"
+    textoDesencriptar.value= `Usted ingresó un caracter inválido, borre su texto o haga click en el logo "A" para limpiar el campo de texto `
     textoDesencriptar.className= "visible style";
             mensajeVacio.className="hidden";
             textoDesencriptar.classList.add('invalido');
-    
+            btnEncriptar.onclick='';
+            btnDesencriptar.onclick='';
+        reset.className="visible"
   } else {
     elem.classList.remove('invalido');
-    
+    btnEncriptar.onclick = encriptar;
+    btnDesencriptar.onclick= desEncriptar;
     textoDesencriptar.className= "hidden";
             mensajeVacio.className="visible style";
             textoDesencriptar.classList.remove('invalido');
